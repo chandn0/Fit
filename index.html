@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whoopie Challenge Contract Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        input,
+        button,
+        select {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .example {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .info {
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Whoopie Challenge Contract Interface</h1>
+
+    <div class="section">
+        <h2>Connect Wallet</h2>
+        <button id="connectWallet">Connect Wallet</button>
+        <p class="info">Connect your wallet to interact with the Whoopie Challenge Contract.</p>
+    </div>
+
+    <div class="section">
+        <h2>Create Challenge</h2>
+        <select id="challengeType">
+            <option value="">Select Challenge Type</option>
+            <option value="hrv">Increase HRV</option>
+            <option value="steps">Daily Step Count</option>
+            <option value="sleep">Improve Sleep Score</option>
+            <option value="workout">Weekly Workout Minutes</option>
+        </select>
+        <input id="challenged" placeholder="Challenged Address (0x...)">
+        <input id="tokenAddress" placeholder="Token Address (0x...)">
+        <input id="amount" placeholder="Amount (e.g., 100 USDC)">
+        <input id="endTime" type="date" placeholder="End Date">
+        <input id="challengeTarget" placeholder="Challenge Target">
+        <label>
+            <input id="isTwoSided" type="checkbox"> Is Two Sided
+        </label>
+        <button id="createChallenge">Create Challenge</button>
+        <div class="example">
+            <h4>Example Challenges:</h4>
+            <ul>
+                <li>Increase HRV by 10% over a week</li>
+                <li>Achieve 10,000 steps daily for 30 days</li>
+                <li>Improve sleep score to 85+ for 14 consecutive nights</li>
+                <li>Complete 150 minutes of workouts per week for a month</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Accept Challenge</h2>
+        <input id="acceptChallengeId" placeholder="Challenge ID (e.g., 1234)">
+        <button id="acceptChallenge">Accept Challenge</button>
+        <p class="info">Enter the Challenge ID sent to you and click to accept the challenge.</p>
+    </div>
+
+    <div class="section">
+        <h2>Claim Reward</h2>
+        <input id="claimChallengeId" placeholder="Challenge ID (e.g., 1234)">
+        <button id="claimReward">Claim Reward</button>
+        <p class="info">If you've completed a challenge successfully, enter the Challenge ID to claim your reward.</p>
+    </div>
+
+    <div class="section">
+        <h2>View Challenges</h2>
+        <button id="getChallengesCreated">Challenges Created</button>
+        <button id="getChallengesReceived">Challenges Received</button>
+        <button id="getAcceptedChallenges">Accepted Challenges</button>
+        <button id="getActiveChallenges">Active Challenges</button>
+        <div id="challengesList"></div>
+    </div>
+
+    <div class="section">
+        <h2>View Challenge Details</h2>
+        <input id="viewChallengeId" placeholder="Challenge ID (e.g., 1234)">
+        <button id="getChallengeDetails">View Details</button>
+        <div id="challengeDetails"></div>
+        <div class="example">
+            <h4>Example Challenge Details:</h4>
+            <pre>
+Challenge ID: 1234
+Type: Increase HRV
+Challenger: 0x1234...5678
+Challenged: 0x5678...1234
+Token: USDC (0xA0b8...C420)
+Amount: 100 USDC
+End Date: 2023-08-01
+Target: 10% increase
+Status: Active
+            </pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Collect Fees (Owner Only)</h2>
+        <input id="feeTokenAddress" placeholder="Token Address (0x...)">
+        <button id="collectFees">Collect Fees</button>
+        <p class="info">Only the contract owner can collect accumulated fees.</p>
+    </div>
+
+    <div class="section">
+        <h2>View Accumulated Fees</h2>
+        <input id="viewFeeTokenAddress" placeholder="Token Address (0x...)">
+        <button id="getAccumulatedFees">View Fees</button>
+        <div id="accumulatedFees"></div>
+        <p class="info">Check the total fees accumulated for a specific token.</p>
+    </div>
+</body>
+
+</html>
